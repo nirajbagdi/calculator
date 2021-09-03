@@ -1,0 +1,216 @@
+/* prettier-ignore */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+:root {
+    --main-background: #3a4764;
+    --screen-background: #182034;
+    --color-primary: #232c43;
+    --color-accent: #d03f2f;
+    --color-text--1: #fff;
+    --color-text--2: #444b5a;
+    --key-background--1: #eae3dc;
+    --key-shadow-color--1: #b4a597;
+    --key-background--2: #637097;
+    --key-shadow-color--2: #404e72;
+    --key-background--3: #d03f2f;
+    --key-shadow-color--3: #93261a;
+}
+
+html[data-theme='dark'] {
+    --main-background: #160628;
+    --screen-background: #1d0934;
+    --color-primary: #1d0934;
+    --color-accent: #00e0d1;
+    --color-text--1: #ffe53d;
+    --color-text--2: #ffe53d;
+    --key-background--1: #341c4f;
+    --key-shadow-color--1: #871c9c;
+    --key-background--2: #58077d;
+    --key-shadow-color--2: #bc15f4;
+    --key-background--3: #00e0d1;
+    --key-shadow-color--3: #6cf9f2;
+}
+
+html[data-theme='light'] {
+    --main-background: #e6e6e6;
+    --screen-background: #ededed;
+    --color-primary: #d1cccc;
+    --key-background--1: #e5e4e1;
+    --key-shadow-color--1: #a69d91;
+    --color-text--1: #35352c;
+    --color-text--2: #35352c;
+    --key-background--2: #377f86;
+    --key-shadow-color--2: #1b5f65;
+    --key-background--3: #ca5502;
+    --key-shadow-color--3: #893901;
+    --color-accent: #ca5502;
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--main-background);
+    font-family: 'Spartan', sans-serif;
+    line-height: 1.6;
+    transition: all 0.5s;
+}
+
+.container {
+    max-width: 45rem;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-text--1);
+    margin-top: 4.8rem;
+}
+
+.calculator {
+    display: grid;
+    grid-template-rows: minmax(10.5rem, auto) 1fr;
+    gap: 1.6rem;
+    margin-top: 1.6rem;
+}
+
+.calculator-screen {
+    text-align: right;
+    background-color: var(--screen-background);
+    border-radius: 10px;
+    padding: 2.4rem;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.calculator-keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: var(--color-primary);
+    border-radius: 10px;
+    padding: 2.4rem;
+    gap: 2rem;
+}
+
+.btn {
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 2.2rem;
+    color: var(--color-text--2);
+    background-color: var(--key-background--1);
+    padding: 1.2rem 0.9rem 0.9rem 0.9rem;
+    box-shadow: 0 4px 0 0 var(--key-shadow-color--1);
+    transition: all 0.3s ease;
+}
+
+.btn:active {
+    box-shadow: none;
+    transform: translateY(5px);
+}
+
+/* prettier-ignore */
+.btn-del, .btn-reset {
+    background-color: var(--key-background--2);
+    box-shadow: 0 4px 0 0 var(--key-shadow-color--2);
+    color: #eae3dc;
+    font-size: 1.6rem;
+}
+
+.btn-equals {
+    background-color: var(--key-background--3);
+    box-shadow: 0 4px 0 0 var(--key-shadow-color--3);
+    color: #eae3dc;
+}
+
+.span-2 {
+    grid-column: span 2;
+}
+
+.header-text {
+    font-size: 3rem;
+}
+
+.calculator-screen--text {
+    font-size: 3.6rem;
+    color: var(--color-text--1);
+    transition: all 0.3s;
+}
+
+.calculator-screen--text.summary {
+    font-size: 1.6rem;
+    color: var(--key-background--2);
+}
+
+.theme-toggle-box {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.theme-toggle {
+    background-color: var(--color-primary);
+    border-radius: 50px;
+    padding: 5px;
+    display: flex;
+    gap: 7px;
+}
+
+.toggle {
+    position: relative;
+    display: flex;
+}
+
+.toggle::before {
+    position: absolute;
+    top: -25px;
+    left: 5px;
+}
+
+.toggle:nth-child(1)::before {
+    content: '1';
+}
+.toggle:nth-child(2)::before {
+    content: '2';
+}
+.toggle:nth-child(3)::before {
+    content: '3';
+}
+
+.toggle input {
+    display: none;
+}
+
+.toggle .checkmark {
+    display: inline-block;
+    cursor: pointer;
+    width: 14px;
+    height: 14px;
+    border-radius: 50px;
+    background-color: transparent;
+}
+
+.toggle input:checked ~ .checkmark {
+    background-color: var(--color-accent);
+}
+
+@media (max-width: 700px) {
+    html {
+        font-size: 50%;
+    }
+    .container {
+        padding: 0 2rem;
+    }
+    .header {
+        margin-top: 9.6rem;
+    }
+}
